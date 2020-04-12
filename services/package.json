@@ -1,0 +1,16 @@
+{
+  "name": "manga-reader-services",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "szy0syz",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
+    "babel-watch": "^7.0.0"
+  },
+  "scripts": {
+    "watch": "babel-watch index.js"
+  }
+}
