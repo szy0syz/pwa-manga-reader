@@ -1,3 +1,6 @@
-require('dotenv').config();
+import 'dotenv/config'
 
-import "./server";
+import './db/connection';
+import './server';
+
+import Manga from './db/models/Manga';

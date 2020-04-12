@@ -75,6 +75,46 @@ app.all('*', (req, res) => {
 app.listen(port, '0.0.0.0', () => console.log(`Services listening on ${port}`));
 ```
 
+- `yarn add @babel/node`
+
+```json
+"scripts": {
+  "start:dev": "babel-node src/index.js",
+  "watch": "babel-watch src/index.js"
+}
+```
+
+### 入口文件正确引入 dotenv
+
+```js
+import 'dotenv/config'
+```
+
+### 封装 cron
+
+- `yarn add node-cron`
+
+```js
+import 'dotenv/config'
+import axios from 'axios';
+import cron from 'node-cron'
+
+const axiosInstance = axios.create({
+  baseURL: process.env.MANGA_EDEN_URL
+})
+
+const seed = async () => {
+  const res = await axiosInstance.get();
+  console.log(res.data.manga.length);
+}
+
+seed();
+
+cron.schedule('0 * * * *', () => {
+  console.log('running a task every hour');
+});
+```
+
 ## Reader-App
 
 ### Initial Reader-App
