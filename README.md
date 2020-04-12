@@ -11,7 +11,7 @@
 ```js
 // babel.config.js
 module.exports = {
-  presets: ['env'],
+  presets: ['@babel/env'],
 };
 ```
 
@@ -26,4 +26,38 @@ module.exports = {
 "scripts": {
   "watch": "babel-watch index.js"
 }
+```
+
+## Reader-App
+
+### Initial Reader-App
+
+- `yarn init`
+- `yarn add -D parcel-bundler`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manga Reader</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="index.js"></script>
+</body>
+</html>
+```
+
+```js
+import React from 'react'
+import { render } from 'react-dom';
+
+render(<h1>Working</h1>, document.getElementById('app'));
+```
+
+```json
+"scripts": {
+  "watch": "parcel src/index.html"
+},
 ```

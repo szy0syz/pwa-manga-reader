@@ -1,0 +1,17 @@
+{
+  "name": "manga-reader-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "szy0syz",
+  "license": "MIT",
+  "scripts": {
+    "watch": "parcel src/index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
