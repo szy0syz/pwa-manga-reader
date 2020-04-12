@@ -108,3 +108,5 @@ render(<h1>Working</h1>, document.getElementById('app'));
   "watch": "parcel src/index.html"
 },
 ```
+
+> Part #2 - 25:00
