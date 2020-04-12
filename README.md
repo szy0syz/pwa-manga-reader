@@ -28,6 +28,53 @@ module.exports = {
 }
 ```
 
+### Notes
+
+- `yarn add dotenv express`
+- 最基础的 `express` 模块
+
+```js
+import express from 'express';
+
+const port = process.env.PORT || 3000;
+
+const app = express();
+
+app.all('*', (req, res) => {
+  res.status(404).json({ status: "Missing endpoint" });
+});
+
+app.listen(port, '0.0.0.0', () => console.log(`Services listening on ${port}`));
+```
+
+- `yarn add apollo-server-express`
+- 最基础的 `graphql-server` 模板
+
+```js
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
+
+import resolvers from '../graphql/resolvers';
+import typeDefs from '../graphql/typeDefs';
+
+const port = process.env.PORT || 3000;
+
+const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+const app = express();
+
+apolloServer.applyMiddleware({ app, path: '/graphql' });
+
+app.all('*', (req, res) => {
+  res.status(404).json({ status: 'Missing endpoint' });
+});
+
+app.listen(port, '0.0.0.0', () => console.log(`Services listening on ${port}`));
+```
+
 ## Reader-App
 
 ### Initial Reader-App
