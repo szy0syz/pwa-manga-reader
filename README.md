@@ -115,6 +115,27 @@ cron.schedule('0 * * * *', () => {
 });
 ```
 
+### babel-alias
+
+- `yarn add -D babel-plugin-module-resolver`
+
+```bash
+{
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "#root": "/",
+      }
+    }]
+  ]
+}
+```
+
+### graphql resolvers
+
+![p001](./services/docs/p001.jpg)
+
 ## Reader-App
 
 ### Initial Reader-App
@@ -149,4 +170,4 @@ render(<h1>Working</h1>, document.getElementById('app'));
 },
 ```
 
-> Part #2 - 25:00
+> Part #4 - 19:14

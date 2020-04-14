@@ -1,16 +1,7 @@
+import Manga from '#root/db/models/Manga'
+
 const mangasResolver = () => {
-  return [
-    {
-      id: "111111",
-      title: "One Piece",
-      image: "/img/img1.jpg",
-    },
-    {
-      id: "222222",
-      title: "Two Piece",
-      image: "/img/img2.jpg",
-    },
-  ];
+  return Manga.find({});
 };
 
 export default mangasResolver;

@@ -2,8 +2,9 @@ import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
   type Manga {
+    _id: ID!
     id: ID!
-    image: String!
+    image: String
     title: String!
   }
 
