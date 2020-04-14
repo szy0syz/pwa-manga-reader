@@ -1,5 +1,13 @@
 import globalAxios from 'axios';
 
+const transformChapters = (chapters) =>
+  chapters.map(([number, lastUpdated, title, id]) => ({
+    id,
+    title,
+    number,
+    lastUpdated,
+  }));
+
 const transformMangas = (mangas) =>
   mangas
     .filter((manga) => manga.ld)
@@ -38,5 +46,8 @@ export const fetchAllMangas = () => (lang) => {
 };
 
 export const fetchMangaInfo = ({ mangaId }) => {
-  return axios.get(`manga/${mangaId}`);
+  return axios.get(`manga/${mangaId}`).then((res) => {
+    res.data.chapters = transformChapters(res.data.chapters);
+    return res;
+  });
 };

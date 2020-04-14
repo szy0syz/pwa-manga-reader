@@ -5,8 +5,8 @@ const typeDefs = gql`
 
   type Chapter {
     id: ID!
-    number: String!
-    title: String!
+    number: Int!
+    title: String
     lastUpdated: Date!
   }
 
