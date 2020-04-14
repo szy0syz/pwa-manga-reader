@@ -170,4 +170,4 @@ render(<h1>Working</h1>, document.getElementById('app'));
 },
 ```
 
-> Part #4 - 19:14
+> Part #5 - 12:35
