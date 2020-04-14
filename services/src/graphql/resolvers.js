@@ -1,7 +1,7 @@
+import * as Query from "./builtInTypes/Query";
+
 const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-  },
+  Query,
 };
 
 export default resolvers;
