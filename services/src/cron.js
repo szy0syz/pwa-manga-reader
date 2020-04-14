@@ -1,37 +1,9 @@
 import 'dotenv/config';
-import axios from 'axios';
+import { fetchAllMangas } from '#root/mangaSources/mangaEden';
 import cron from 'node-cron';
-import './db/connection';
-import Manga from './db/models/Manga';
+import '#root/db/connection';
+import Manga from '#root/db/models/Manga';
 
-const axiosInstance = axios.create({
-  baseURL: process.env.MANGA_EDEN_URL,
-});
-
-const transformMangaEden = mangas =>
-  mangas
-  .filter(manga => manga.ld)
-  .map(
-    ({
-      a: alias,
-      c: categories,
-      h: hits,
-      i: _id,
-      im: image,
-      s: status,
-      t: title,
-      ld: lastUpdated,
-    }) => ({
-      _id,
-      alias,
-      categories,
-      hits,
-      image,
-      status,
-      title,
-      lastUpdated,
-    })
-  )
 
 // axiosInstance.interceptors.response.use((res) => {
 //   if (res.config.baseURL === process.env.MANGA_EDEN_URL) {
@@ -61,7 +33,7 @@ const transformMangaEden = mangas =>
 // });
 
 const seed = async () => {
-  const res = await axiosInstance.get();
+  const res = await fetchAllMangas();
   const mangas = transformMangaEden(res.data.manga);
   await Manga.insertMany(mangas);
   console.log('[seeded]');

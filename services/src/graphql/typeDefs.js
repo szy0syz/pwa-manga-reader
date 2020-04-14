@@ -3,15 +3,28 @@ import { gql } from "apollo-server-express";
 const typeDefs = gql`
   scalar Date
 
+  type Chapter {
+    id: ID!
+    number: String!
+    title: String!
+    lastUpdated: Date!
+  }
+
   type Manga {
     id: ID!
+    info: MangaInfo!
     image: String
     title: String!
     lastUpdated: Date
   }
 
+  type MangaInfo {
+    chapters: [Chapter!]!
+    id: ID!
+  }
+
   type Query {
-    hello: String
+    manga(id: ID!): Manga
     mangas: [Manga]!
   }
 `;

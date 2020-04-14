@@ -1,12 +1,20 @@
 module.exports = {
-  presets: ["@babel/env"],
+  presets: [
+    [
+      '@babel/preset-env',
+      // {
+      //   targets: {
+      //     esmodules: true,
+      //   },
+      // },
+    ],
+  ],
   plugins: [
     [
-      "module-resolver",
+      'module-resolver',
       {
-        // root: ["./src"],
         alias: {
-          "#root": "./src",
+          '#root': './src',
         },
       },
     ],

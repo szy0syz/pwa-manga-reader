@@ -41,7 +41,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.all('*', (req, res) => {
-  res.status(404).json({ status: "Missing endpoint" });
+  res.status(404).json({ status: 'Missing endpoint' });
 });
 
 app.listen(port, '0.0.0.0', () => console.log(`Services listening on ${port}`));
@@ -87,7 +87,7 @@ app.listen(port, '0.0.0.0', () => console.log(`Services listening on ${port}`));
 ### 入口文件正确引入 dotenv
 
 ```js
-import 'dotenv/config'
+import 'dotenv/config';
 ```
 
 ### 封装 cron
@@ -95,18 +95,18 @@ import 'dotenv/config'
 - `yarn add node-cron`
 
 ```js
-import 'dotenv/config'
+import 'dotenv/config';
 import axios from 'axios';
-import cron from 'node-cron'
+import cron from 'node-cron';
 
 const axiosInstance = axios.create({
-  baseURL: process.env.MANGA_EDEN_URL
-})
+  baseURL: process.env.MANGA_EDEN_URL,
+});
 
 const seed = async () => {
   const res = await axiosInstance.get();
   console.log(res.data.manga.length);
-}
+};
 
 seed();
 
@@ -136,6 +136,25 @@ cron.schedule('0 * * * *', () => {
 
 ![p001](./services/docs/p001.jpg)
 
+### ReferenceError: regeneratorRuntime is not defined
+
+- 解决办法
+
+```js
+module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          esmodules: true,
+        },
+      },
+    ],
+  ],
+};
+```
+
 ## Reader-App
 
 ### Initial Reader-App
@@ -146,19 +165,19 @@ cron.schedule('0 * * * *', () => {
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Manga Reader</title>
-</head>
-<body>
-  <div id="app"></div>
-  <script src="index.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manga Reader</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="index.js"></script>
+  </body>
 </html>
 ```
 
 ```js
-import React from 'react'
+import React from 'react';
 import { render } from 'react-dom';
 
 render(<h1>Working</h1>, document.getElementById('app'));
