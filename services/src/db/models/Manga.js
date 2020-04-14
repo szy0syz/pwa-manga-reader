@@ -7,6 +7,7 @@ const MangaSchema = new mongoose.Schema({
   image: String,
   status: Number,
   title: String,
+  lastUpdated: Number,
 });
 
 const Manga = mongoose.model("Manga", MangaSchema);
