@@ -135,6 +135,7 @@ cron.schedule('0 * * * *', () => {
 ### graphql resolvers
 
 ![p001](./services/docs/p001.jpg)
+![p002](./services/docs/p002.png)
 
 ### ReferenceError: regeneratorRuntime is not defined
 
@@ -153,6 +154,33 @@ module.exports = {
     ],
   ],
 };
+```
+
+### 目录结构
+
+```bash
+.
+├── cron.js
+├── db
+│   ├── connection.js
+│   └── models
+│       └── Manga.js
+├── graphql
+│   ├── resolvers
+│   │   ├── Manga.js
+│   │   ├── Query
+│   │   │   ├── index.js
+│   │   │   ├── manga.js
+│   │   │   └── mangas.js
+│   │   └── index.js
+│   └── typeDefs.js
+├── index.js
+├── mangaSources
+│   └── mangaEden.js
+└── server
+    └── index.js
+
+7 directories, 12 files
 ```
 
 ## Reader-App
@@ -188,5 +216,3 @@ render(<h1>Working</h1>, document.getElementById('app'));
   "watch": "parcel src/index.html"
 },
 ```
-
-> Part #5 - 12:35

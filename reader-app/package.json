@@ -5,6 +5,7 @@
   "author": "szy0syz",
   "license": "MIT",
   "scripts": {
+    "build": "rm -rf dist && parcel build src/index.html",
     "watch": "parcel --port=3001 src/index.html"
   },
   "devDependencies": {
