@@ -216,3 +216,32 @@ render(<h1>Working</h1>, document.getElementById('app'));
   "watch": "parcel src/index.html"
 },
 ```
+
+### Apollo-Client
+
+- `yarn add graphql react-apollo apollo-client apollo-link-http apollo-cache-inmemory`
+
+```js
+// src/api/graphql.js
+import { ApolloClient } from 'apollo-client'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+
+export const cache = new InMemoryCache();
+
+export const client = new ApolloClient({
+  cache,
+  link: new HttpLink({
+    credentials: "include",
+    uri: process.env.SERVICES_URI + '/graphql'
+  })
+})
+
+export default client;
+
+```
+
+### antd
+
+- `yarn add antd`
+- www.bundlephobia.com

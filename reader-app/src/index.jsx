@@ -1,8 +1,21 @@
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import { render } from 'react-dom';
+import { ApolloProvider } from 'react-apollo';
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
+import grahpqlClient from './api/graphql';
+import './global.less';
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
 }
 
-render(<h1>Working~</h1>, document.getElementById("app"));
+const App = () => {
+  return <strong>App</strong>
+}
+
+render(
+  <ApolloProvider client={grahpqlClient}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById('app')
+);
